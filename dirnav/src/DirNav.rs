@@ -133,6 +133,12 @@ impl<App: DirEvent + Default> DirNav<App> {
     }
 }
 
+impl<App: DirEvent + Default> Default for DirNav<App> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -160,9 +166,7 @@ mod tests {
 
     impl Default for Test {
         fn default() -> Self {
-            Self {
-                results: Vec::<PathBuf>::new(),
-            }
+            Self::new()
         }
     }
 
