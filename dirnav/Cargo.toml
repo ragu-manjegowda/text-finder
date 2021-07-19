@@ -1,11 +1,11 @@
 [package]
-name = "dir_nav"
+name = "dirnav"
 version = "0.1.0"
 edition = "2018"
 authors = ["Ragu Manjegowda <raghavendrahm0410@gmail.com>"]
 
 [lib]
-name = "dirnav"           # The name of the target.
-path = "src/DirNav.rs"    # The source file of the target.
+name = "dir_nav"           # The name of the target.
+path = "src/dir_nav.rs"    # The source file of the target.
 
 [dependencies]

@@ -1,4 +1,4 @@
-use dirnav::*;
+use dir_nav::*;
 use std::env::current_dir;
 use std::io;
 use std::path::{Path, PathBuf};
