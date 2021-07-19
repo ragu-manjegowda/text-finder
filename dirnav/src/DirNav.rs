@@ -60,12 +60,12 @@ impl<App: DirEvent + Default> DirNav<App> {
     }
 
     /// Returns processed file count
-    pub fn get_number_of_files_processed(self) -> usize {
+    pub fn get_number_of_files_processed(&self) -> usize {
         self.num_file
     }
 
     /// Returns processed dirs count
-    pub fn get_number_of_dirs_processed(self) -> usize {
+    pub fn get_number_of_dirs_processed(&self) -> usize {
         self.num_dirs
     }
 
