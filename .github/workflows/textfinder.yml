@@ -1,0 +1,48 @@
+name: Text Finder CI
+
+on:
+    push:
+        branches: [ main ]
+
+    pull_request:
+        branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+
+    build:
+    
+        runs-on: ubuntu-latest
+        container:
+            image: ragumanjegowda/docker:latest
+            options: --user root -v ${{ github.workspace }}:/mnt/:rw
+
+        steps:
+
+            - uses: actions/checkout@v2
+
+            - name: Update Rust
+              run: /opt/cargo/update.sh
+
+            - name: Test Cargo
+              run: echo $CARGO_HOME && which cargo && cargo --version
+
+            - name: Navigate to dirnav, Test format, Test clippy warnings
+              run: |
+                cd /mnt/dirnav
+                cargo fmt -- --check
+                cargo clippy -- -Dwarnings
+                
+            - name: Navigate to dirnav, Test norecurse, Test recurse, Test search patterns
+              run: |
+                cd /mnt/dirnav
+                cargo test --verbose tests::test_norecurse -- --exact
+                cargo test --verbose tests::test_recurse -- --exact
+                cargo test --verbose tests::test_searchpatterns -- --exact
+
+            - name: Navigate to dirnav, Run dirnav example app
+              run: |
+                cd /mnt/dirnav
+                cargo run --verbose --example dir_nav_example_app
