@@ -89,3 +89,8 @@ jobs:
                 cd /mnt/textsearch
                 cargo test --verbose tests::test_sets -- --exact
                 cargo test --verbose tests::test_traits -- --exact
+
+            - name: Navigate to textsearch, Run textsearch example app
+              run: |
+                cd /mnt/textsearch
+                cargo run --verbose --example text_search_example_app
