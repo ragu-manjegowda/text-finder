@@ -105,7 +105,7 @@ impl<App: DirEvent + Default> DirNav<App> {
                 } else {
                     self.num_file += 1;
                     if self.has_pattern(&entry) | self.patterns.is_empty() {
-                        self.app.do_file(&Path::new(&entry.file_name()));
+                        self.app.do_file(Path::new(&entry.file_name()));
                     }
                 }
             }
