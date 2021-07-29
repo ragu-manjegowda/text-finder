@@ -63,3 +63,29 @@ jobs:
               run: |
                 cd /mnt/dirnav
                 cargo run --verbose --example dir_nav_example_app
+
+    test-textsearch:
+        runs-on: ubuntu-latest
+        container:
+            image: ragumanjegowda/docker:latest
+            options: --user root -v ${{ github.workspace }}:/mnt/:rw
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Update Rust
+              run: /opt/cargo/update.sh
+
+            - name: Test Cargo
+              run: echo $CARGO_HOME && which cargo && cargo --version
+
+            - name: Navigate to textsearch, Test format, Test clippy warnings
+              run: |
+                cd /mnt/textsearch
+                cargo fmt -- --check
+                cargo clippy -- -Dwarnings
+
+            - name: Navigate to textsearch, Test sets, Test traits
+              run: |
+                cd /mnt/textsearch
+                cargo test --verbose tests::test_sets -- --exact
+                cargo test --verbose tests::test_traits -- --exact
