@@ -11,16 +11,33 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-
-    build:
-    
+    test-workspace-root:
         runs-on: ubuntu-latest
         container:
             image: ragumanjegowda/docker:latest
             options: --user root -v ${{ github.workspace }}:/mnt/:rw
-
         steps:
+            - uses: actions/checkout@v2
 
+            - name: Update Rust
+              run: /opt/cargo/update.sh
+
+            - name: Test Cargo
+              run: echo $CARGO_HOME && which cargo && cargo --version
+
+            - name: Navigate to workspace root, Test format, Test clippy warnings
+              run: |
+                cd /mnt
+                cargo build
+                cargo fmt -- --check
+                cargo clippy -- -Dwarnings
+
+    test-dirnav:
+        runs-on: ubuntu-latest
+        container:
+            image: ragumanjegowda/docker:latest
+            options: --user root -v ${{ github.workspace }}:/mnt/:rw
+        steps:
             - uses: actions/checkout@v2
 
             - name: Update Rust
@@ -34,7 +51,7 @@ jobs:
                 cd /mnt/dirnav
                 cargo fmt -- --check
                 cargo clippy -- -Dwarnings
-                
+
             - name: Navigate to dirnav, Test norecurse, Test recurse, Test search patterns
               run: |
                 cd /mnt/dirnav
