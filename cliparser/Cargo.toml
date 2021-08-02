@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2018"
 authors = ["Ragu Manjegowda <raghavendrahm0410@gmail.com>"]
 
-[[bin]]
+[lib]
 name = "cli_parser"           # The name of the target.
 path = "src/cli_parser.rs"    # The source file of the target.

@@ -70,13 +70,13 @@ impl CliParser {
                 arg_str = &arg[2..];
 
                 self.args_dict
-                    .entry(arg[2..].to_string())
+                    .entry(arg[2..].to_string().to_lowercase())
                     .or_insert_with(Vec::<String>::new);
             } else {
                 if arg[0..1] == *"-" {
                     std::panic!("Value cannot begin with reserved char `-`");
                 }
-                CliParser::insert_if_not_exist(&mut self.args_dict, arg_str, arg);
+                CliParser::insert_if_not_exist(&mut self.args_dict, &arg_str.to_lowercase(), arg);
             }
         }
 
@@ -100,10 +100,10 @@ impl CliParser {
     pub fn add_params_key_value(&mut self, key: &str, value: &str) {
         // If not exist, create a dummy entry to avoid remove returning `None`
         self.args_dict
-            .entry(key.to_string())
+            .entry(key.to_string().to_lowercase())
             .or_insert_with(Vec::<String>::new);
 
-        CliParser::insert_if_not_exist(&mut self.args_dict, key, value);
+        CliParser::insert_if_not_exist(&mut self.args_dict, &key.to_lowercase(), value);
     }
 
     fn insert_if_not_exist(dict: &mut HashMap<String, Vec<String>>, key: &str, value: &str) {
@@ -132,17 +132,6 @@ impl Default for CliParser {
     fn default() -> Self {
         Self::new()
     }
-}
-
-fn main() {
-    let mut app = CliParser::new();
-    app.set_params(std::env::args().collect());
-    app.parse_params();
-    app.add_params_key_value("path", "./");
-    app.add_params_key_value("path", "../");
-    app.display_params();
-    app.display_parsed_params();
-    println!("Thats all!");
 }
 
 #[cfg(test)]
