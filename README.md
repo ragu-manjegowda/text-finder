@@ -1,5 +1,3 @@
-<br/><br/>
-
 [![Text Finder CI](https://github.com/ragu-manjegowda/text-finder/workflows/Text%20Finder%20CI/badge.svg)](https://github.com/ragu-manjegowda/text-finder/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -9,10 +7,7 @@
 
 This project is my first baby step towards learning [RUST](https://www.rust-lang.org/).
 
-If you are system software engineer and looking for a strong reason 
-for why Rust (apart from the fact it is getting recommended to be 
-included in Linux kernel code), here is the video that I highly 
-recommend - [Considering Rust](https://www.youtube.com/watch?v=DnT-LUQgc7s)
+If you are looking for a reason to `why Rust`, here is the video that I highly recommend - [Considering Rust](https://www.youtube.com/watch?v=DnT-LUQgc7s)
 
 <br/><br/>
 
@@ -35,8 +30,13 @@ It can be used to:
 <img src="man/figures/design.jpeg" width="900" height="350" />
 
 Traits are specified by caller and implemented by called. This reverses 
-the dependency chain and hence called ***Dependency Inversion 
-Principle*** or ***Type Erase***
+the dependency chain **Please feel free to check the dependencies in Cargo.toml files** and hence called ***Dependency Inversion Principle*** or ***Type Erase***
+
+<br/><br/>
+
+<img src="man/figures/textfinderstructs.jpeg" width="900" height="350" />
+
+This is how text-finder packages are implemented according to the dependency inversion principle explained above.
 
 ## Pros
  * Each component can be built and compiled separately.
