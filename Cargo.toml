@@ -1,8 +1,8 @@
 [workspace]
 
 members = [
-    "cliparser",
-    "dirnav",
-    "display",
-    "textsearch",
+    "src/cliparser",
+    "src/dirnav",
+    "src/display",
+    "src/textsearch",
 ]
