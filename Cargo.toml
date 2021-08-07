@@ -3,5 +3,6 @@
 members = [
     "cliparser",
     "dirnav",
+    "display",
     "textsearch",
 ]
