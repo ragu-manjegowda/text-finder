@@ -32,6 +32,42 @@ jobs:
                 cargo fmt -- --check
                 cargo clippy -- -Dwarnings
 
+    test-cliparser:
+        runs-on: ubuntu-latest
+        container:
+            image: ragumanjegowda/docker:latest
+            options: --user root -v ${{ github.workspace }}:/mnt/:rw
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Update Rust
+              run: rustup update
+
+            - name: Test Cargo
+              run: echo $CARGO_HOME && which cargo && cargo --version
+
+            - name: Navigate to cliparser, Test format, Test clippy warnings
+              run: |
+                cd /mnt/cliparser
+                cargo fmt -- --check
+                cargo clippy -- -Dwarnings
+
+            - name: Navigate to cliparser, run tests
+              run: |
+                cd /mnt/cliparser
+                cargo test --verbose tests::test_parameters -- --exact
+                cargo test --verbose tests::test_parsing_empty -- --exact
+                cargo test --verbose tests::test_parsing_non_empty -- --exact
+                cargo test --verbose tests::test_parsing_invalid_key -- --exact
+                cargo test --verbose tests::test_parsing_invalid_value -- --exact
+                cargo test --verbose tests::test_parsing_duplicate -- --exact
+                cargo test --verbose tests::test_parsing_set_key_value -- --exact
+
+            - name: Navigate to cliparser, Run cliparser example app
+              run: |
+                cd /mnt/cliparser
+                cargo run --verbose --example cli_parser_example_app
+
     test-dirnav:
         runs-on: ubuntu-latest
         container:
