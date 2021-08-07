@@ -20,7 +20,7 @@ jobs:
             - uses: actions/checkout@v2
 
             - name: Update Rust
-              run: /opt/cargo/update.sh
+              run: rustup update
 
             - name: Test Cargo
               run: echo $CARGO_HOME && which cargo && cargo --version
@@ -41,7 +41,7 @@ jobs:
             - uses: actions/checkout@v2
 
             - name: Update Rust
-              run: /opt/cargo/update.sh
+              run: rustup update
 
             - name: Test Cargo
               run: echo $CARGO_HOME && which cargo && cargo --version
@@ -73,7 +73,7 @@ jobs:
             - uses: actions/checkout@v2
 
             - name: Update Rust
-              run: /opt/cargo/update.sh
+              run: rustup update
 
             - name: Test Cargo
               run: echo $CARGO_HOME && which cargo && cargo --version
