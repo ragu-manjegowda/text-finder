@@ -76,7 +76,6 @@ For example, use the below command to run dir nav example app.
 # Credits and References
 
 I am indebted to [Prof. Dr. Jim Fawcett](https://jimfawcett.github.io/) for 
-motivating me (and many others) to learn rust and taking time to [teach Rust](https://www.youtube.com/playlist?list=PLRqLz6z12zQp3eNC6cOtMa1zlhBimMHkD) for  
-all of his former students through bi-weekly sessions.
+motivating me (and many others) to learn rust and taking time to [teach Rust](https://www.youtube.com/playlist?list=PLRqLz6z12zQp3eNC6cOtMa1zlhBimMHkD) for all of his former students through bi-weekly sessions.
 
 This project and it's design principles are largely based on what he taught.
