@@ -7,3 +7,4 @@ authors = ["Ragu Manjegowda <raghavendrahm0410@gmail.com>"]
 [lib]
 name = "cli_parser"           # The name of the target.
 path = "src/cli_parser.rs"    # The source file of the target.
+doctest = false               # disable doctest

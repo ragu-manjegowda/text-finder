@@ -7,3 +7,4 @@ authors = ["Ragu Manjegowda <raghavendrahm0410@gmail.com>"]
 [lib]
 name = "dir_nav"           # The name of the target.
 path = "src/dir_nav.rs"    # The source file of the target.
+doctest = false            # disable doctest
