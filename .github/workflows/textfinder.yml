@@ -48,13 +48,13 @@ jobs:
 
             - name: Navigate to cliparser, Test format, Test clippy warnings
               run: |
-                cd /mnt/cliparser
+                cd /mnt/src/cliparser
                 cargo fmt -- --check
                 cargo clippy -- -Dwarnings
 
             - name: Navigate to cliparser, run tests
               run: |
-                cd /mnt/cliparser
+                cd /mnt/src/cliparser
                 cargo test --verbose tests::test_parameters -- --exact
                 cargo test --verbose tests::test_parsing_empty -- --exact
                 cargo test --verbose tests::test_parsing_non_empty -- --exact
@@ -65,7 +65,7 @@ jobs:
 
             - name: Navigate to cliparser, Run cliparser example app
               run: |
-                cd /mnt/cliparser
+                cd /mnt/src/cliparser
                 cargo run --verbose --example cli_parser_example_app
 
     test-dirnav:
@@ -84,20 +84,20 @@ jobs:
 
             - name: Navigate to dirnav, Test format, Test clippy warnings
               run: |
-                cd /mnt/dirnav
+                cd /mnt/src/dirnav
                 cargo fmt -- --check
                 cargo clippy -- -Dwarnings
 
             - name: Navigate to dirnav, Test norecurse, Test recurse, Test search patterns
               run: |
-                cd /mnt/dirnav
+                cd /mnt/src/dirnav
                 cargo test --verbose tests::test_norecurse -- --exact
                 cargo test --verbose tests::test_recurse -- --exact
                 cargo test --verbose tests::test_searchpatterns -- --exact
 
             - name: Navigate to dirnav, Run dirnav example app
               run: |
-                cd /mnt/dirnav
+                cd /mnt/src/dirnav
                 cargo run --verbose --example dir_nav_example_app
 
     test-display:
@@ -116,19 +116,19 @@ jobs:
 
             - name: Navigate to display, Test format, Test clippy warnings
               run: |
-                cd /mnt/display
+                cd /mnt/src/display
                 cargo fmt -- --check
                 cargo clippy -- -Dwarnings
 
             - name: Navigate to display, run tests
               run: |
-                cd /mnt/display
+                cd /mnt/src/display
                 cargo test --verbose tests::test_set_dir -- --exact
                 cargo test --verbose tests::test_set_file -- --exact
 
             - name: Navigate to display, Run display example app
               run: |
-                cd /mnt/display
+                cd /mnt/src/display
                 cargo run --verbose --example display_example_app
 
     test-textsearch:
@@ -147,17 +147,17 @@ jobs:
 
             - name: Navigate to textsearch, Test format, Test clippy warnings
               run: |
-                cd /mnt/textsearch
+                cd /mnt/src/textsearch
                 cargo fmt -- --check
                 cargo clippy -- -Dwarnings
 
             - name: Navigate to textsearch, Test sets, Test traits
               run: |
-                cd /mnt/textsearch
+                cd /mnt/src/textsearch
                 cargo test --verbose tests::test_sets -- --exact
                 cargo test --verbose tests::test_traits -- --exact
 
             - name: Navigate to textsearch, Run textsearch example app
               run: |
-                cd /mnt/textsearch
+                cd /mnt/src/textsearch
                 cargo run --verbose --example text_search_example_app
