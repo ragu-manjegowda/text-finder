@@ -45,6 +45,12 @@ impl SearchEvent for Display {
     }
 }
 
+impl Default for Display {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

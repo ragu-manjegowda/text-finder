@@ -1,0 +1,16 @@
+[package]
+name = "executive"
+version = "0.1.0"
+edition = "2018"
+authors = ["Ragu Manjegowda <raghavendrahm0410@gmail.com>"]
+
+[lib]
+name = "executive"           # The name of the target.
+path = "src/executive.rs"    # The source file of the target.
+doctest = false            # disable doctest
+
+[dependencies]
+cliparser = { git = "https://github.com/ragu-manjegowda/text-finder" }
+dirnav = { git = "https://github.com/ragu-manjegowda/text-finder" }
+display = { git = "https://github.com/ragu-manjegowda/text-finder" }
+textsearch = { git = "https://github.com/ragu-manjegowda/text-finder" }

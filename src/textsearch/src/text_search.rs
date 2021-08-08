@@ -71,6 +71,12 @@ impl<T: SearchEvent> TextSearch<T> {
     }
 }
 
+impl<T: SearchEvent> Default for TextSearch<T> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

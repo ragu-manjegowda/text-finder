@@ -2,6 +2,7 @@
 
 members = [
     "src/cliparser",
+    "src/executive",
     "src/dirnav",
     "src/display",
     "src/textsearch",
