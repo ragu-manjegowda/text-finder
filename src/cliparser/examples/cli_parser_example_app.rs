@@ -4,7 +4,7 @@ fn set_args(app: &mut CliParser) {
     let cl_arguments: Vec<String> = std::env::args().collect();
 
     println!("cl_arguments = {:?}", cl_arguments);
-    app.set_params(cl_arguments);
+    app.set_params(&cl_arguments);
     app.parse_params();
 
     if app.get_parsed_params().is_empty() {
@@ -16,7 +16,7 @@ fn set_args(app: &mut CliParser) {
             "0.1".to_string(),
         ];
 
-        app.set_params(s);
+        app.set_params(&s);
         app.parse_params();
     }
 

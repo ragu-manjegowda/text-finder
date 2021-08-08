@@ -16,8 +16,8 @@ impl CliParser {
         }
     }
 
-    pub fn set_params(&mut self, params: Vec<String>) {
-        self.args_vec = params;
+    pub fn set_params(&mut self, params: &[String]) {
+        self.args_vec = params.to_vec();
         self.has_parsed = false;
     }
 
@@ -144,12 +144,12 @@ mod tests {
         let cl_arguments: Vec<String> = std::env::args().collect();
 
         println!("\nSetting command line arguments as params");
-        app.set_params(cl_arguments.clone());
+        app.set_params(&cl_arguments);
         assert_eq!(*app.get_params(), cl_arguments);
         app.display_params();
 
         println!("Setting empty vector as params");
-        app.set_params(Vec::<String>::new());
+        app.set_params(&Vec::<String>::new());
         assert!(app.get_params().is_empty());
         app.display_params();
     }
@@ -159,7 +159,7 @@ mod tests {
         let mut app = CliParser::new();
 
         let cl_arguments = Vec::<String>::new();
-        app.set_params(cl_arguments.clone());
+        app.set_params(&cl_arguments);
         app.parse_params();
         assert!(app.get_parsed_params().is_empty());
     }
@@ -176,7 +176,7 @@ mod tests {
             "0.1".to_string(),
         ];
 
-        app.set_params(s);
+        app.set_params(&s);
         app.display_params();
         app.parse_params();
         app.display_parsed_params();
@@ -200,7 +200,7 @@ mod tests {
             "0.1".to_string(),
         ];
 
-        app.set_params(s);
+        app.set_params(&s);
         app.display_params();
 
         app.parse_params();
@@ -219,7 +219,7 @@ mod tests {
             "0.1".to_string(),
         ];
 
-        app.set_params(s);
+        app.set_params(&s);
         app.display_params();
         app.parse_params();
     }
@@ -242,7 +242,7 @@ mod tests {
             "../".to_string(),
         ];
 
-        app.set_params(s);
+        app.set_params(&s);
         app.display_params();
         app.parse_params();
         app.display_parsed_params();
@@ -264,7 +264,7 @@ mod tests {
             "0.1".to_string(),
         ];
 
-        app.set_params(s);
+        app.set_params(&s);
         app.display_params();
         app.parse_params();
         app.display_parsed_params();
