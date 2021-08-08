@@ -49,11 +49,6 @@ impl<App: DirEvent + Default> DirNav<App> {
         self.patterns.push(pattern.to_path_buf());
     }
 
-    /// Get file extensions to look for
-    pub fn get_patterns(&mut self) -> &mut SearchPatterns {
-        &mut self.patterns
-    }
-
     /// Get instance to App of trait DirEvent
     pub fn get_app(&mut self) -> &mut App {
         &mut self.app
@@ -238,11 +233,11 @@ mod tests {
         directory_nav.add_patterns(&Path::new("bin"));
         directory_nav.add_patterns(&Path::new("out"));
 
-        assert_eq!(directory_nav.get_patterns().len(), 3);
+        assert_eq!(directory_nav.patterns.len(), 3);
 
         directory_nav.reset();
 
-        assert_eq!(directory_nav.get_patterns().len(), 0);
+        assert_eq!(directory_nav.patterns.len(), 0);
     }
 
     fn teardown() {
