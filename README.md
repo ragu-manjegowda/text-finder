@@ -13,6 +13,11 @@ If you are looking for a reason to `why Rust`, here is the video that I highly r
 
 # Text Finder
 
+| <img src="man/figures/text-finder.gif" width="900" height="350" /> |
+|:--:| 
+| ***Text Finder in action - searching for "name" in \*.toml files under "./"*** |
+
+
 Text Finder is a tool for locating files containing text that matches a specified regular expression.  
 It uses the facilities of RustDirNav and RustCmdLine libraries, and
 std::fs and regex crates.
@@ -67,9 +72,9 @@ Highly recommend installing rust with [**rustup**](https://www.rust-lang.org/too
 ## Build and Run
 
 Each module has examples and tests (refer workflow file for more info).  
-For example, use the below command to run dir nav example app.
+For example, use the below command to run executive (text-finder) example app.
 
-    $ cargo run --example dir_nav_example_app
+    $ cargo run --example executive_example_app
 
 <br/><br/>
 
