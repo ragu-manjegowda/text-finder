@@ -131,6 +131,38 @@ jobs:
                 cd /mnt/src/display
                 cargo run --verbose --example display_example_app
 
+    test-executive:
+        runs-on: ubuntu-latest
+        container:
+            image: ragumanjegowda/docker:latest
+            options: --user root -v ${{ github.workspace }}:/mnt/:rw
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Update Rust
+              run: rustup update
+
+            - name: Test Cargo
+              run: echo $CARGO_HOME && which cargo && cargo --version
+
+            - name: Navigate to executive, Test format, Test clippy warnings
+              run: |
+                cd /mnt/src/executive
+                cargo fmt -- --check
+                cargo clippy -- -Dwarnings
+
+            - name: Navigate to executive, Test sets, Test traits
+              run: |
+                cd /mnt/src/executive
+                cargo test --verbose tests::test_construction_default -- --exact
+                cargo test --verbose tests::test_construction_custom -- --exact
+                cargo test --verbose tests::test_construction_execution -- --exact
+
+            - name: Navigate to executive, Run executive example app
+              run: |
+                cd /mnt/src/executive
+                cargo run --verbose --example executive_example_app
+
     test-textsearch:
         runs-on: ubuntu-latest
         container:
