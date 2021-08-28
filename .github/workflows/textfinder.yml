@@ -163,6 +163,37 @@ jobs:
                 cd /mnt/src/executive
                 cargo run --verbose --example executive_example_app
 
+    test-textfinder:
+        runs-on: ubuntu-latest
+        container:
+            image: ragumanjegowda/docker:latest
+            options: --user root -v ${{ github.workspace }}:/mnt/:rw
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Update Rust
+              run: rustup update
+
+            - name: Test Cargo
+              run: echo $CARGO_HOME && which cargo && cargo --version
+
+            - name: Navigate to textfinder, Test format, Test clippy warnings
+              run: |
+                cd /mnt/apps/textfinder
+                cargo fmt -- --check
+                cargo clippy -- -Dwarnings
+
+            - name: Navigate to textfinder, Test sets, Test traits
+              run: |
+                cd /mnt/apps/textfinder
+                cargo build --bin textfinder --release
+
+            - name: Run textfinder app from root folder to show more results
+              run: |
+                cd /mnt/
+                cargo run --verbose --release --bin textfinder \
+                      -- --path ./ --pattern toml --text name --recurse true
+
     test-textsearch:
         runs-on: ubuntu-latest
         container:
