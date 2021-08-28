@@ -71,10 +71,14 @@ Highly recommend installing rust with [**rustup**](https://www.rust-lang.org/too
 
 ## Build and Run
 
-Each module has examples and tests (refer workflow file for more info).  
-For example, use the below command to run executive (text-finder) example app.
+Run the textfinder app with the following commands
 
-    $ cargo run --example executive_example_app
+    $ cargo clean # not required or oprtional
+    $ cargo update # not required or oprtional
+    $ cargo build --bin textfinder --release
+    $ cargo run --release --bin textfinder -- --path ./ --pattern toml --text name --recurse true
+
+Additionally, each module has examples and tests (refer workflow file for more info).
 
 <br/><br/>
 
